@@ -1,0 +1,243 @@
+#pleasewaitimage
+  {
+    color: #fff;
+    display: none;
+    position: fixed;
+    background: rgba(6, 12, 24, 0.84);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    z-index: 99999;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 40em;
+  }
+  #pleasewaitimage img{
+        width: 45px;
+  }
+
+  .imgresizeas{
+      width: 200px;
+       margin-left: 10px;
+ } 
+
+ .imgwidth{
+      width: 200px;
+    margin-top: 50px;
+    margin-left: 170px;
+ } 
+
+ .Start_Transaction_container {
+    background: #fff;
+    margin: 0 10px;
+} 
+.Documents .Start_Transaction_container .documentsBox {
+    padding: 20px;
+}
+.Documents .Start_Transaction_container .documentsBox .documentsBoxTopFlex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.Documents .Start_Transaction_container .documentsBox .documentsBoxTopFlex .searchBox {
+    position: relative;
+}
+.Documents .Start_Transaction_container .documentsBox .documentsBoxTopFlex .searchBox input {
+    padding: 8px 15px;
+    border: 1px solid #e9e9e9;
+}
+.Documents .Start_Transaction_container .documentsBox .documentsBoxTopFlex .searchBox button {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    height: 100%;
+    background: none;
+    /* border: none; */
+}
+.Documents .Start_Transaction_container .documentsBox .documentsBoxTopFlex div.btn {
+    text-transform: uppercase;
+    border-radius: 30px;
+    border: 2px solid #000;
+    color: #000;
+    margin: 0px 5px;
+    font-weight: 600;
+    padding: 7px 30px;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.documentTable {
+    margin-top: 10px;
+    border: 1px solid #e9e9e9;
+}
+.Documents .Start_Transaction_container .documentsBox {
+    padding: 20px;
+}
+.documentTable thead {
+    background: #edf6ff;
+}
+.documentTable tr td button.btn {
+    border: 2px solid #2281e1;
+    padding: 2px 15px;
+    background: transparent;
+    border-radius: 20px;
+    box-shadow: none;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+}
+.Documents .Start_Transaction_container .documentsBox .documentsBoxTopFlex .searchBox input {
+    padding: 8px 15px;
+    border: 1px solid #e9e9e9;
+}
+.Documents .Start_Transaction_container .documentsBox .documentsBoxTopFlex .searchBox button {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    height: 100%;
+    background: none;
+    border: none;
+}
+.Documents .Start_Transaction_container .documentsBox .documentsBoxTopFlex div.btn:hover {
+    background: #000;
+    color: #fff;
+}
+.content-wrapper .btn {
+    /* background: #b61d22; */
+    padding: 7px 15px;
+    border: 0;
+    box-shadow: none;
+    outline: none;
+    color: #fff;
+    border-radius: 0px;
+    font-size: 14px;
+}
+
+
+
+.ti-aboutcount .ti-countflex .count-cols {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    font-size: 18px;
+    border: 1px solid #3bb9cf;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: #fff;
+    font-family: 'Rubik-Regular';
+    color: #000;
+}
+.ti-aboutcount .ti-countflex .count-cols.yellow {
+    border-color: #f9d51d;
+}
+
+.ti-aboutcount .ti-countflex .count-cols.pink {
+    border-color: #db2b75;
+}
+.ti-aboutcount .ti-countflex .count-cols.red {
+    border-color: #8f9597;
+}
+
+.ti-aboutcount .ti-countflex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 12em;
+}
+
+.ti-aboutcount .ti-countflex .count-cols .ti-counttext {
+    line-height: 25px;
+}
+
+.pointer {cursor: pointer;}
+.textcenter{
+  padding:10px;
+  text-align: center;
+}
+
+   .loading {
+            *background: lightgrey;
+            padding: 15px;
+            position: fixed;
+            border-radius: 4px;
+            left: 50%;
+            top: 35%;
+            text-align: center;
+            margin: -40px 0 0 -50px;
+            z-index: 2000;
+            display: none;
+        }
+
+/*switcher*/
+ .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+.switch input {
+    display: none;
+}
+  input:checked + .sliderswitch {
+    background-color: #42a73e;
+}
+.sliderswitch.round {
+    border-radius: 34px;
+}
+.sliderswitch {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e74c3c;
+    transition: .4s;
+}
+.sliderswitch:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+}
+
+.sliderswitch.round:before {
+    border-radius: 50%;
+}
+
+
+input:checked + .sliderswitch {
+    background-color: #42a73e;
+}
+input:checked + .sliderswitch:before {
+    -webkit-transform: translateX(26px);
+    transform: translateX(26px);
+}
+.searchwidth{ 
+width: 400px
+}
+/*switcher*/
