@@ -8,6 +8,7 @@ use App\Http\Controllers\Front\CoursesController;
 use App\Http\Controllers\Front\FooterController;
 use App\Http\Controllers\Front\HeaderController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'home']);
+
+// XML sitemap (generated from live data)
+Route::get('sitemap.xml', [SitemapController::class, 'index']);
 
 // Header / footer partial endpoints + newsletter subscribe
 Route::get('header', [HeaderController::class, 'welcome']);
@@ -32,6 +36,15 @@ Route::post('/contact-us/store', [ContactusController::class, 'submitForm'])->na
 Route::get('blog', [BlogpageController::class, 'blog']);
 Route::get('blog-listing', [BlogpageController::class, 'blog']);
 Route::get('/search-posts', [BlogpageController::class, 'search'])->name('search.posts');
+// Old WordPress blog URLs -> new URLs (301). Config: config/redirects.php. Must stay BEFORE blog/{slug}.
+foreach (config('redirects.blog_slugs', []) as $oldSlug => $newSlug) {
+    Route::permanentRedirect('blog/'.$oldSlug, '/blog/'.$newSlug);
+}
+foreach (config('redirects.blog_list_prefixes', []) as $prefix) {
+    // /blog/category/x, /blog/author/x, /blog/page/2, /blog/tag/x have no equivalent page -> blog listing
+    Route::permanentRedirect('blog/'.$prefix, '/blog');
+    Route::get('blog/'.$prefix.'/{any}', fn () => redirect('/blog', 301))->where('any', '.*');
+}
 Route::get('blog/{slug}', [BlogpageController::class, 'blogDetails']);
 Route::get('international-paid-internship/{slug}', [BlogpageController::class, 'intprogrampageDetails']);
 

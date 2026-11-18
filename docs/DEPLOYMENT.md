@@ -31,8 +31,15 @@ Package: `docs/deploy/build_demo_package_2.py` → `deploy2.zip` (22 KB; SQL + 7
 5. `php -l` OK on the controller and config; `sudo -u www php artisan config:clear` + `view:clear`; `deploy2.zip` removed.
 6. **Verified over HTTP:** `/`, `/faq`, `/bangalore`, `/gurgaon`, `/mumbai`, `/delhi`, `/blog` → 200 with expected titles; `/faq` lists items 1–40 (no double-escaped `&amp;amp;`); each centre page shows its course cards, intakes, gallery (Bangalore also the YouTube embed) and the APPLY NOW button; footer shows Bangalore/Gurugram/Mumbai/Delhi (internal) and Malaysia → apcamalaysia.com; centre images → 200.
 
+## Third deployment — 2026-11-18 (Delhi page + blog redirects + sitemap)
+Package: `docs/deploy/build_demo_package_3.py` -> `deploy3.zip` (14 KB, **code only: no database change, no new images**), uploaded through the panel, applied in the panel terminal.
+1. **Backups first** -> `/root/apca_backup_20261118_3/files/…` (the 4 existing files that were replaced). Before overwriting, their CR-stripped md5 were compared with the git baseline: `routes/web.php` 284f66ea, `AboutusController.php` ec221afe, `config/centres.php` 294dc2fb, `delhi.blade.php` d46a0b97 — all identical, and the 2 new files did not exist.
+2. **Files copied** (owner `www`): `routes/web.php`, `app/Http/Controllers/Front/AboutusController.php`, `app/Http/Controllers/Front/SitemapController.php` (new), `config/centres.php`, `config/redirects.php` (new), `resources/views/aboutus/delhi.blade.php`.
+3. `php -l` OK on all 6; `sudo -u www php artisan route:clear`, `config:clear`, `view:clear`; `deploy3.zip` removed.
+4. **Verified over HTTP:** `/`, `/delhi`, `/bangalore`, `/gurgaon`, `/mumbai`, `/faq`, `/blog` -> 200 with expected titles; `/delhi` shows the live content, intakes, gallery and APPLY NOW; the 13 old blog slugs and `/blog/category|author|page|tag/…` -> **301** to the right targets; old trailing-slash URLs take **2 hops** on Apache (slash, then redirect) and end at 200; `/sitemap.xml` -> 200 `application/xml`, **289 URLs, all 289 return 200 on the demo**.
+
 ## State of the demo vs local (2026-11-18)
-The demo now matches the local code and data except: the empty `blog/dummy-page` SEO row (still on demo), `docs/` (not deployed), and anything done after this entry. Production: untouched.
+The demo matches the local code and data except: the empty `blog/dummy-page` SEO row (still on demo) and `docs/` (not deployed). Production: untouched.
 
 ## Rollback (demo) — first deployment
 ```bash
@@ -56,4 +63,12 @@ mysql -h127.0.0.1 -u<user> sql_demo_karmatech_in < /root/apca_backup_20261118_2/
 cp -r /root/apca_backup_20261118_2/files/* .                                                    # restore the 5 original files
 rm -f config/centres.php; rm -rf resources/views/aboutus/partials                              # remove the new files
 sudo -u www php artisan config:clear; sudo -u www php artisan view:clear
+```
+
+## Rollback — third deployment
+```bash
+cd /www/wwwroot/demo.karmatech.in
+cp -r /root/apca_backup_20261118_3/files/* .                       # restore the 4 original files
+rm -f app/Http/Controllers/Front/SitemapController.php config/redirects.php
+sudo -u www php artisan route:clear; sudo -u www php artisan config:clear; sudo -u www php artisan view:clear
 ```

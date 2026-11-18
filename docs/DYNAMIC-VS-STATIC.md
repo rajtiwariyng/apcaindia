@@ -30,14 +30,15 @@ Verified 2026-11-18 from controllers, views and the database. Page-by-page detai
 ## Static (developer-edited)
 | What | Where |
 |---|---|
-| **Centre pages' text, courses, intake dates, centre photos** (Bangalore, Gurgaon, Mumbai) | `config/centres.php` (+ images in `public/assets/images/centres/`) |
-| Delhi centre page body | `resources/views/aboutus/delhi.blade.php` |
+| **Centre pages' text, courses, intake dates, centre photos** (Bangalore, Gurgaon, Mumbai, Delhi) | `config/centres.php` (+ images in `public/assets/images/centres/`) |
 | `/courses` listing page (the whole page — controller data is unused) | `resources/views/courses/courses.blade.php` |
-| `/faculty`, `/accomodation`, `/admission`, `/online-registration`, `/program-application`, `/program-flyers`, `/academic-intake-calendar`, `/apca-programs`, `/achivements`, `/achivements-gallery`, `/news`, `/news-details`, `/career`, `/career-opportunities`, `/industrial-visit`, `/recipe-and-inspiration`, `/recipes-and-inspiration`, `/visit-the-academy`, `/pay-now`, `/privacy-policy`, `/terms-and-conditions` | the matching file in `resources/views/aboutus/` |
+| `/faculty`, `/accomodation`, `/admission`, `/online-registration`, `/program-application`, `/program-flyers`, `/academic-intake-calendar`, `/apca-programs`, `/achivements`, `/achivements-gallery`, `/news`, `/news-details`, `/career`, `/career-opportunities`, `/recipe-and-inspiration`, `/visit-the-academy`, `/pay-now`, `/privacy-policy`, `/terms-and-conditions` | the matching file in `resources/views/aboutus/` |
 | Header navigation, footer link columns, campus links, newsletter row | `resources/views/header/*.blade.php`, `resources/views/footer/footer.blade.php` |
 | Apply Now modal, Enquire Now popup, appointment/enquiry forms | `resources/views/footer/*`, `aboutus/enquiry-form`, `courses/appointment-form` |
 | Static site images (logos, icons, sponsor logos, banners) | `public/assets/images/` (not editable in admin) |
 | Form validation + saving | `ContactusController@submitForm` (all forms share it, `page_name` tells them apart) |
+
+*(Not listed above: `/industrial-visit` and `/recipes-and-inspiration` — their view files do not exist, so they currently return 500.)*
 
 ## Mixed
 - **Course detail page** (`/course/{slug}`): everything comes from the DB, but the layout blocks (appointment form, partners, testimonials) are fixed partials.

@@ -317,6 +317,7 @@ class AboutusController extends Controller
     public function delhi(Request $request)
     {
         $data = $this->cityData($request);
+        $data['centre'] = $this->centrePage('delhi');
 
         return view('Aboutus::delhi', compact('data'));
     }

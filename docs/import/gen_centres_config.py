@@ -33,7 +33,7 @@ def img_list(city, names):
 def intakes(pairs):
     return [{'name': n, 'date': TYPO_FIX.get(dt, dt)} for n, dt in pairs]
 
-b, g, m = d['bangalore'], d['gurgaon'], d['mumbai']
+b, g, m, dl = d['bangalore'], d['gurgaon'], d['mumbai'], d['delhi']
 cfg = {
     'bangalore': {
         'title': b['h1'], 'intro': b['paras'][0:3], 'video': 'VaB7_wzmPJ0',
@@ -80,6 +80,26 @@ cfg = {
                             ('Full Time Culinary', '23rd Nov. 2026'), ('6 Weeks Eggless Certificate', '-'),
                             ('Part Time Culinary', '5th Sep 2026'), ('12 Week Intensive course', '22th Feb 2027'),
                             ('3 years degree course with specialization in Culinary & Pastry arts', '23rd August 2027')]),
+        'gallery': img_list('gurgaon', ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg']),
+    },
+    'delhi': {
+        'title': dl['h1'], 'intro': dl['paras'][0:4], 'video': None,
+        'media_image': 'assets/images/centres/gurgaon/1.jpg',  # live Delhi page shows the same photos as Gurgaon
+        'sections': [
+            {'heading': None, 'paras': [dl['paras'][4]], 'list': []},
+        ],
+        'courses_intro': None,
+        'courses': [
+            course('pf', 'Pastry Advanced Diploma Program', FT),
+            course('pp', 'Pastry Part Time Program', PT),
+            course('cf', 'Culinary Advanced Diploma Program', FT),
+            course('ba', '3 years degree course with specialization in Culinary & Pastry arts', DEG3),
+        ],
+        # dates copied as-is from the live page (already in the past on 2026-11-18)
+        'intakes': intakes([('Full Time Pastry & Bakery', '25th May 2026'), ('Part Time Pastry & Bakery', '23rd May 2026'),
+                            ('Full Time Culinary', '25th May 2026'), ('6 Weeks Eggless Certificate', '9th March 2026'),
+                            ('Part Time Culinary', '23rd May 2026'),
+                            ('3 years degree course with specialization in Culinary & Pastry arts', '17th August 2026')]),
         'gallery': img_list('gurgaon', ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg']),
     },
     'mumbai': {

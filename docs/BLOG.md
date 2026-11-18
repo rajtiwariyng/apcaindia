@@ -29,7 +29,7 @@ Every blog request is logged to `page_views`. `view_count` and `email_sent` colu
 - Scripts: `docs/import/import_wp_blog.php` (dry run by default, `--commit`), `docs/import/backfill_wp_blog_images.php`. They read the scratch DB `apca_blog_wp_scratch` (the dump imported as-is; it only exists locally).
 - Demo server received the same data on 2026-11-18 (see [DEPLOYMENT.md](DEPLOYMENT.md)).
 
-## Old WordPress URLs vs new URLs (needed for redirects — not built yet)
+## Old WordPress URLs vs new URLs (redirects built 2026-11-18, local + demo)
 - Old: `https://www.apcaindia.com/blog/<post-name>/` (trailing slash). New: `/blog/<slug>`; the trailing slash is already 301-redirected by `public/.htaccess`.
 - **13 slugs changed** during import (underscores/odd characters were removed, so the old URL would 404). Old `post_name` → new `slug`:
 
@@ -49,8 +49,8 @@ Every blog request is logged to `page_views`. `view_count` and `email_sent` colu
 | 94 | `academy-of-culinary-arts-bangalore-blogs_delicious-vegetarian-food-for-everyone` | `academy-of-culinary-arts-bangalore-blogsdelicious-vegetarian-food-for-everyone` |
 | 97 | `academy-of-culinary-arts-bangalore-blogs_-how-culinary-schools-evolved-in-india` | `academy-of-culinary-arts-bangalore-blogs-how-culinary-schools-evolved-in-india` |
 
-- Old sitemap also lists blog list URLs with no equivalent: `/blog/category/<x>/`, `/blog/author/<x>/`, `/blog/page/<n>/`, tag pages (93 URLs).
+- **Done:** the 13 URLs above now 301 to the new slug (`config/redirects.php`), and `/blog/category/*`, `/blog/author/*`, `/blog/page/*`, `/blog/tag/*` (about 93 old URLs) 301 to `/blog`. Tested (`tests/Feature/Front/RedirectsTest.php`). Deployed to the demo 2026-11-18 (verified: 301s; old trailing-slash URLs take 2 hops on Apache).
 - The WordPress `wp_redirection_items` table has 1 rule: `/blog/best-culinary-arts-degree-programs-in-bangalore-foraspiring-chef` → `/blog/`.
 
 ## Known issues / to do
-1. Search is broken (500). 2. Hidden posts are reachable by URL. 3. 160 of 242 live posts have no meta description (WordPress had none). 4. 13 old slugs need redirects. 5. No blog block on the home page although data is loaded. 6. Posts 6 and 7 have external-URL-style slugs (original data).
+1. Search is broken (500). 2. Hidden posts are reachable by URL. 3. 160 of 242 live posts have no meta description (WordPress had none). 4. 13 old slugs need redirects — **done (local + demo)**. 5. No blog block on the home page although data is loaded. 6. Posts 6 and 7 have external-URL-style slugs (original data).

@@ -17,7 +17,7 @@ Health check: `GET /up`.
 ## Folder map
 | Path | Purpose |
 |---|---|
-| `routes/web.php` | 53 public routes (incl. `/header`, `/footer` partial endpoints, `/up`, `/storage/{path}`) |
+| `routes/web.php` | 75 public routes (incl. 22 blog redirects, `/sitemap.xml`, `/header`, `/footer` partial endpoints, `/up`, `/storage/{path}`) |
 | `routes/admin.php` | 126 admin routes (`/admin/...`, `/admin-login`) |
 | `app/Http/Controllers/Front/` | Home, Aboutus (most pages), Blogpage, Contactus, Courses, Categories, Header, Footer |
 | `app/Http/Controllers/Admin/` | one controller per CMS module; shared `Concerns/AdminCrudActions` (status toggle + delete) |
@@ -26,7 +26,9 @@ Health check: `GET /up`.
 | `app/Services/ImageUploadService.php` | image/video/pdf upload validation + storage |
 | `app/Models/` | 24 models mapped to legacy tables |
 | `app/helpers.php` | `random_unique_id()`, `record_page_view()`, `encode()`, `decode()`, `getExcerpt()` |
-| `config/centres.php` | content for the Bangalore/Gurgaon/Mumbai pages (see below) |
+| `config/centres.php` | content for the Bangalore/Gurgaon/Mumbai/Delhi pages (see below) |
+| `config/redirects.php` | old-URL redirect maps (13 blog slugs + blog list prefixes), registered in `routes/web.php` |
+| `app/Http/Controllers/Front/SitemapController.php` | generates `/sitemap.xml` |
 | `resources/views/` | 145 Blade files (listed in [PAGES.md](PAGES.md)) |
 | `public/assets/` | `css/`, `js/`, `images/` (static site images), `upload/` (admin-uploaded media), `fonts/`, `pdf/`, a few root videos |
 | `public/admin_assets/` | admin theme (bootstrap, ckeditor, fullcalendar, …) |
@@ -43,8 +45,8 @@ Health check: `GET /up`.
 - `AboutusController::cityData()` (city pages): `foundermsg` (`tbl_pages` "Message from director"), `faqs` (`tbl_faqs` with `home=1`), page-view log.
 - `AboutusController::centrePage($city)`: loads `config/centres.php` and resolves each course image from `tbl_homeprogram` (by course slug), falling back to `assets/images/placeholder.jpg`.
 
-## Centre pages (Bangalore / Gurgaon / Mumbai)
-Hero + enquiry form + callback form + FAQs + partners + map stay in each view; the middle (intro, sections, courses, intakes, gallery) is the shared partial `aboutus/partials/centre-body.blade.php`, filled from `config/centres.php` (content copied from the live site on 2026-11-18). **Delhi still uses its old static view.** Intake dates are static text in the config — update them there.
+## Centre pages (Bangalore / Gurgaon / Mumbai / Delhi)
+Hero + enquiry form + callback form + FAQs + partners + map stay in each view; the middle (intro, sections, courses, intakes, gallery) is the shared partial `aboutus/partials/centre-body.blade.php`, filled from `config/centres.php` (content copied from the live site on 2026-11-18). Delhi was moved to the same partial on 2026-11-18 (its photos are the Gurgaon files — the live Delhi page uses the same ones). Intake dates are static text in the config — update them there.
 
 ## Uploads
 Admin uploads go through `ImageUploadService` into `public/assets/upload/<folder>/` with filename `uniqid()_originalname`. Images: jpg/jpeg/png < 2 MB; banner video mp4/mov/avi ≤ 300 MB; PDF ≤ 20 MB. Folders written by admin modules are listed in [ADMIN.md](ADMIN.md). Folders `cakefondant`, `chefs`, `homebanner`, `news` exist but nothing in the code references them.

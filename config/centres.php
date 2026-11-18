@@ -297,6 +297,103 @@ return [
             'assets/images/centres/gurgaon/6.jpg',
         ],
     ],
+    'delhi' => [
+        'title' => 'Baking & Pastry Courses in Delhi',
+        'intro' => [
+            'Realise your culinary dreams with APCA Delhi.',
+            'By enrolling in the APCA culinary or pastry full-time programs in Delhi, aspiring chefs and pastry chefs have the opportunity to receive top-notch education, gain practical experience, and enhance their career prospects in the culinary world.',
+            'The APCA Culinary & Pastry course provides comprehensive training in all aspects of culinary arts. Students gain hands-on experience in various culinary techniques, menu planning, food preparation, and kitchen management. The program is designed to equip students with the skills and knowledge needed to excel in the culinary industry.',
+            'With an area of 20,000 sq. ft. the APCA Delhi facility has 9 kitchens along with a student lounge, cafeteria, store and an oven room. Individual attention and learning from fundamentals set the Academy part in the current competitive landscape. The seasoned team from the Delhi branch encompasses industry experts and illustrious winners of India Pastry Championship for 2015 & 2017, with an overall 3rd position in Asia ranking. These honors are a testament to the high-quality training provided by APCA and the success of its graduates in the culinary industry.',
+        ],
+        'video' => null,
+        'media_image' => 'assets/images/centres/gurgaon/1.jpg',
+        'sections' => [
+            [
+                'heading' => null,
+                'paras' => [
+                    'Enroll now to pursue your passion and contribute to the vibrant world of culinary arts.',
+                ],
+                'list' => [],
+            ],
+        ],
+        'courses_intro' => null,
+        'courses' => [
+            [
+                'title' => 'Pastry Advanced Diploma Program',
+                'lines' => [
+                    'Duration: 9 Months',
+                    'Days: Monday - Friday',
+                    'Timing: 9:00am-5:00pm',
+                ],
+                'url' => '/course/advanced-diploma-in-pastry-bakery-arts',
+                'slug' => 'advanced-diploma-in-pastry-bakery-arts',
+            ],
+            [
+                'title' => 'Pastry Part Time Program',
+                'lines' => [
+                    'Duration: 12 Week Session',
+                    'Days: Saturday-Sunday',
+                    'Timing: 9:00am-5:00pm',
+                ],
+                'url' => '/course/weekend-part-time-pastry-program',
+                'slug' => 'weekend-part-time-pastry-program',
+            ],
+            [
+                'title' => 'Culinary Advanced Diploma Program',
+                'lines' => [
+                    'Duration: 9 Months',
+                    'Days: Monday - Friday',
+                    'Timing: 9:00am-5:00pm',
+                ],
+                'url' => '/course/advanced-diploma-in-culinary-arts',
+                'slug' => 'advanced-diploma-in-culinary-arts',
+            ],
+            [
+                'title' => '3 years degree course with specialization in Culinary & Pastry arts',
+                'lines' => [
+                    'Duration: 3 years',
+                    'Days: Monday - Friday',
+                    'Timing: 9:00 am - 5:00 pm',
+                ],
+                'url' => '/course/bachelor-degree-with-specialization-in-pastry-culinary-arts',
+                'slug' => 'bachelor-degree-with-specialization-in-pastry-culinary-arts',
+            ],
+        ],
+        'intakes' => [
+            [
+                'name' => 'Full Time Pastry & Bakery',
+                'date' => '25th May 2026',
+            ],
+            [
+                'name' => 'Part Time Pastry & Bakery',
+                'date' => '23rd May 2026',
+            ],
+            [
+                'name' => 'Full Time Culinary',
+                'date' => '25th May 2026',
+            ],
+            [
+                'name' => '6 Weeks Eggless Certificate',
+                'date' => '9th March 2026',
+            ],
+            [
+                'name' => 'Part Time Culinary',
+                'date' => '23rd May 2026',
+            ],
+            [
+                'name' => '3 years degree course with specialization in Culinary & Pastry arts',
+                'date' => '17th August 2026',
+            ],
+        ],
+        'gallery' => [
+            'assets/images/centres/gurgaon/1.jpg',
+            'assets/images/centres/gurgaon/2.jpg',
+            'assets/images/centres/gurgaon/3.jpg',
+            'assets/images/centres/gurgaon/4.jpg',
+            'assets/images/centres/gurgaon/5.jpg',
+            'assets/images/centres/gurgaon/6.jpg',
+        ],
+    ],
     'mumbai' => [
         'title' => 'Baking & Culinary Classes in Mumbai',
         'intro' => [
