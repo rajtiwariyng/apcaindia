@@ -4,6 +4,8 @@ Working instructions for AI agents. Project setup, layout and gotchas are in `CL
 
 ## Project context
 
+- **Start every session by reading `docs/README.md` and `docs/STATUS.md`** (built / pending / known bugs / uncommitted work). Keep `docs/CHANGELOG.md` and the matching topic doc updated with every change. Do not assume — verify, or mark **(not verified)**.
+
 - Laravel 12 / PHP 8.2+ site and CMS for APCA (culinary academy), rebuilt from a legacy Laravel 7 app. It shares the **legacy production schema** (`tbl_*`, `courses`, `users`); no migrations are run against it.
 - Local: XAMPP MySQL database `apcaindia` (import `apcaindia.sql`), `php artisan serve --port=8000`.
 - No Vite/JS build source exists; views use static assets in `public/assets` and `public/admin_assets`.

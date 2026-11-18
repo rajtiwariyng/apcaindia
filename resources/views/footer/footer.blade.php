@@ -78,10 +78,11 @@
           <div class="col-lg-3 col-md-6  d-lg-block d-none pt-md-15">
             <h5 class="footer-title orange">WORLD WIDE CAMPUS</h5>
             <ul class="footer-links">
-              <li><a target="_blank" href="https://www.apcaindia.com/bangalore.html">APCA India, Bangalore</a></li>
-              <li><a target="_blank" href="https://www.apcaindia.com/gurgaon.html">APCA India, Gurugram</a></li>
-              <li><a target="_blank" href="https://www.apcaindia.com/mumbai.html">APCA India, Mumbai</a></li>
-              <li><a target="_blank" href="https://www.apcaindia.com/malaysia.html">APCA Malaysia</a></li>
+              <li><a href="{{url('/')}}/bangalore">APCA India, Bangalore</a></li>
+              <li><a href="{{url('/')}}/gurgaon">APCA India, Gurugram</a></li>
+              <li><a href="{{url('/')}}/mumbai">APCA India, Mumbai</a></li>
+              <li><a href="{{url('/')}}/delhi">APCA India, Delhi</a></li>
+              <li><a target="_blank" href="https://www.apcamalaysia.com">APCA Malaysia</a></li>
               <li><a target="_blank" href="https://apcaindonesia.com/">APCA Indonesia</a></li>
               <li><a target="_blank" href="https://apcaphilippines.com/">APCA Philippines</a></li>
               <li><a target="_blank" href="https://apcasingapore.com/">APCA Singapore</a></li>  

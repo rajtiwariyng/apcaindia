@@ -22,3 +22,10 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Videos are too large for GitHub (100MB/file limit) - keep on disk/servers, not in git
+*.mp4
+*.mov
+*.MOV
+*.avi
+/docs/deploy/out/

@@ -1,5 +1,7 @@
 # CLAUDE.md — APCA India
 
+**Read `docs/README.md` and `docs/STATUS.md` first** — they record what is built, what is pending, what is static vs dynamic, and known bugs. Update the matching doc and `docs/CHANGELOG.md` with every change; never assume — mark anything unverified as such.
+
 Laravel 12 (PHP 8.2+) marketing/CMS site for APCA (culinary academy). It is a rebuild of a legacy Laravel 7 app and uses the **same legacy table schema** (`tbl_*`, `courses`, `users`, ...). See `DEPLOYMENT.md` for the production cutover plan.
 
 ## Run locally (XAMPP, Windows)

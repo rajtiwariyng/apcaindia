@@ -293,6 +293,7 @@ class AboutusController extends Controller
     public function bangalore(Request $request)
     {
         $data = $this->cityData($request);
+        $data['centre'] = $this->centrePage('bangalore');
 
         return view('Aboutus::bangalore', compact('data'));
     }
@@ -300,6 +301,7 @@ class AboutusController extends Controller
     public function gurgaon(Request $request)
     {
         $data = $this->cityData($request);
+        $data['centre'] = $this->centrePage('gurgaon');
 
         return view('Aboutus::gurgaon', compact('data'));
     }
@@ -307,6 +309,7 @@ class AboutusController extends Controller
     public function mumbai(Request $request)
     {
         $data = $this->cityData($request);
+        $data['centre'] = $this->centrePage('mumbai');
 
         return view('Aboutus::mumbai', compact('data'));
     }
@@ -316,6 +319,28 @@ class AboutusController extends Controller
         $data = $this->cityData($request);
 
         return view('Aboutus::delhi', compact('data'));
+    }
+
+    /**
+     * City centre content (config/centres.php) with each course's image resolved from tbl_homeprogram
+     * (matched by course slug); falls back to the site placeholder when a course has no stored image.
+     *
+     * @return array<string, mixed>
+     */
+    private function centrePage(string $city): array
+    {
+        $centre = config('centres.'.$city);
+        $images = DB::table('tbl_homeprogram')->where('status', '=', 1)->pluck('image', 'slug');
+
+        foreach ($centre['courses'] as &$course) {
+            $file = $course['slug'] ? ($images[$course['slug']] ?? null) : null;
+            $course['image'] = ($file && is_file(public_path('assets/upload/homeprogram/'.$file)))
+                ? 'assets/upload/homeprogram/'.rawurlencode($file)
+                : 'assets/images/placeholder.jpg';
+        }
+        unset($course);
+
+        return $centre;
     }
 
     /**
