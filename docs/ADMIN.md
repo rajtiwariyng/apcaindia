@@ -33,7 +33,7 @@ Pattern for almost every module: `listing/{d?}` (page + `*_ajax` partial), `crea
 | `/admin/pdf`, `/admin/intakecalender` | PdfController | `tbl_pdf` | `pdf` (pdf ≤20 MB) | 14 |
 | `/admin/intprogram`, `/admin/intcontent` | IntprogramController | `tbl_intprogram`, `tbl_intcontent` | `intprogram` | 6 / 1 |
 | `/admin/intprogrampage` | IntprogrampageController | `tbl_intprogram_page` (+ writes `tbl_seo`) | `intprogram_page` | 5 |
-| `/admin/faqs` | FaqsController | `tbl_faqs` | — | 13 |
+| `/admin/faqs` | FaqsController | `tbl_faqs` | — | 40 |
 
 Shared code: `Admin\Concerns\AdminCrudActions` (status toggle by `uniqueid`; delete guarded by table name), `App\Services\ImageUploadService` (extensions + size rules; failures return the legacy messages), `app/helpers.php::random_unique_id()` for new `uniqueid`s.
 

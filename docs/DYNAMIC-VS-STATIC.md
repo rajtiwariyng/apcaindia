@@ -13,7 +13,7 @@ Verified 2026-11-18 from controllers, views and the database. Page-by-page detai
 | Home slider text | Slider Content | `tbl_content` (1 row) | home |
 | Program cards | Home Program | `tbl_homeprogram` (10 rows) | home; also the **images** on centre-page course cards |
 | Blog posts + categories | Manage Blogs / Blogs Categories | `tbl_blog`, `tbl_blog_category` (+ `tbl_seo`) | `/blog`, `/blog/{slug}` — see [BLOG.md](BLOG.md) |
-| FAQs | Faqs | `tbl_faqs` | `/faq`; 4 flagged `home=1` also on home and city pages — see [FAQ.md](FAQ.md) |
+| FAQs | Faqs | `tbl_faqs` (40) | `/faq`; 4 flagged `home=1` also on home and city pages — see [FAQ.md](FAQ.md) |
 | Testimonials | Manage Testimonials | `tbl_testimonial` (all 9 have home=1) | home; course pages |
 | Gallery items | Gallery | `tbl_gallery` (30) + `gallary_category` (3) | `/gallery` |
 | Placement partners (logo strip) | Placement Partners | `tbl_placementpartners` (17) | partner strip on most pages |

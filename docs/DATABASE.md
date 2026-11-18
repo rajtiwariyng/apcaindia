@@ -14,7 +14,7 @@ All content tables use `uniqueid` (varchar) + `status` (1 = visible) + `created_
 | `tbl_blog` | 249 | Blog posts — [BLOG.md](BLOG.md) | title, slug, description, image, category(name), status, meta*, img_alt |
 | `tbl_blog_category` | 6 | Blog categories | category_name |
 | `tbl_seo` | 278 | Page titles/descriptions — [SEO.md](SEO.md) | url_slug, page_name, seo_title, seo_desc, seo_keywords |
-| `tbl_faqs` | 13 | FAQs — [FAQ.md](FAQ.md) | question, answer, home |
+| `tbl_faqs` | 40 | FAQs — [FAQ.md](FAQ.md) | question, answer, home |
 | `banner_videos` | 20 | Page banners (image/video); `page` = URL last segment / course slug / `home` | video_path, image, page |
 | `tbl_homeslider` | 30 | Home sliders (`category` = `section 1`/`section 2`/`student`; student rows carry `page` = course slug or `home`) | image, category, page, order_by, caption |
 | `tbl_content` | 1 | Home slider text | title, title2, content, content2 |

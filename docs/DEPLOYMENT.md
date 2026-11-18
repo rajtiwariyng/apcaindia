@@ -22,10 +22,19 @@ Method: a small package built by `docs/deploy/build_demo_package.php` (insert-on
 6. **Verified over HTTP:** `/`, `/faq`, `/bangalore`, `/blog`, a blog post → 200 with expected titles; `/blog` lists 242 posts; logos/icons/blog image → 200.
 Not done on demo: removal of the empty `blog/dummy-page` SEO row.
 
-## NOT on the demo yet (local only as of 2026-11-18)
-Footer campus-link changes, rebuilt Bangalore/Gurgaon/Mumbai pages (`config/centres.php`, `aboutus/partials/centre-body`, 16 centre photos, `AboutusController::centrePage`), all `docs/`.
+## Second deployment — 2026-11-18 (FAQs + centre pages + footer)
+Package: `docs/deploy/build_demo_package_2.py` → `deploy2.zip` (22 KB; SQL + 7 code files + an image-fetch script), uploaded through the panel and run in the panel terminal.
+1. **Backups first** → `/root/apca_backup_20261118_2/tbl_faqs.sql` and `/root/apca_backup_20261118_2/files/…` (the 5 files that were replaced). Before overwriting, the demo's 5 files were checksum-matched (CR-stripped md5) against the local baseline — identical, so nothing on the server was lost.
+2. **DB (insert-only, `NOT EXISTS`):** `tbl_faqs` 13 → **40** (27 live-site FAQs, plain text); `home=1` still 4.
+3. **Code copied** (owner `www`): `app/Http/Controllers/Front/AboutusController.php`, `config/centres.php` (new), `resources/views/aboutus/{bangalore,gurgaon,mumbai}.blade.php`, `resources/views/aboutus/partials/centre-body.blade.php` (new), `resources/views/footer/footer.blade.php`.
+4. **Images:** 16 centre photos downloaded server-side into `public/assets/images/centres/{bangalore,gurgaon,mumbai}/` (16 ok, 0 failed).
+5. `php -l` OK on the controller and config; `sudo -u www php artisan config:clear` + `view:clear`; `deploy2.zip` removed.
+6. **Verified over HTTP:** `/`, `/faq`, `/bangalore`, `/gurgaon`, `/mumbai`, `/delhi`, `/blog` → 200 with expected titles; `/faq` lists items 1–40 (no double-escaped `&amp;amp;`); each centre page shows its course cards, intakes, gallery (Bangalore also the YouTube embed) and the APPLY NOW button; footer shows Bangalore/Gurugram/Mumbai/Delhi (internal) and Malaysia → apcamalaysia.com; centre images → 200.
 
-## Rollback (demo)
+## State of the demo vs local (2026-11-18)
+The demo now matches the local code and data except: the empty `blog/dummy-page` SEO row (still on demo), `docs/` (not deployed), and anything done after this entry. Production: untouched.
+
+## Rollback (demo) — first deployment
 ```bash
 cd /www/wwwroot/demo.karmatech.in
 export MYSQL_PWD=<from .env>; mysql -h127.0.0.1 -u<user> sql_demo_karmatech_in < /root/apca_backup_20261118/tables.sql
@@ -39,3 +48,12 @@ Not deployed. Before any production change: backup, dry run of importers, explic
 
 ## Deploy checklist (use every time)
 1. Back up the tables/files you will touch. 2. Insert-only SQL with existence guards. 3. Copy changed files; `chown www:www`. 4. `sudo -u www php artisan view:clear` (and `config:clear` if `.env`/config changed). 5. Verify URLs. 6. Log it in [CHANGELOG.md](CHANGELOG.md) and update this file.
+
+## Rollback — second deployment
+```bash
+cd /www/wwwroot/demo.karmatech.in; export MYSQL_PWD=<from .env>
+mysql -h127.0.0.1 -u<user> sql_demo_karmatech_in < /root/apca_backup_20261118_2/tbl_faqs.sql   # back to 13 FAQs
+cp -r /root/apca_backup_20261118_2/files/* .                                                    # restore the 5 original files
+rm -f config/centres.php; rm -rf resources/views/aboutus/partials                              # remove the new files
+sudo -u www php artisan config:clear; sudo -u www php artisan view:clear
+```
